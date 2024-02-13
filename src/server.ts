@@ -1,9 +1,8 @@
 import express, { Request, Response } from "express";
-import dotenv from "dotenv";
 import connectDB from "./db/connectDB";
 import cookieParser from "cookie-parser";
-import userRoutes from "./routes/userRoutes"
-
+import userRoutes from "./routes/userRoutes";
+import * as dotenv from "dotenv";
 dotenv.config();
 
 // Establish database connection

@@ -1,6 +1,24 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types, Document } from "mongoose";
 
-const userSchema = new Schema(
+
+// Defining User Interface
+export interface user extends Document {
+    _id: Types.ObjectId,
+    name: string,
+    username: string,
+    email: string,
+    password: string,
+    confirm_password: string,
+    profilePic?: string,
+    bio?: string,
+    followers?: [string],
+    following?: string,
+    isFrozen?: boolean,
+    location?: any
+}
+
+
+const userSchema = new Schema<user>(
     {
         name: {
             type: String,
@@ -60,6 +78,6 @@ const userSchema = new Schema(
     }
 );
 
-const User = model("User", userSchema);
+const User = model<user>("User", userSchema);
 
 export default User;
